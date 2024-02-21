@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Information</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">        
+        <div class="info-card" id="cpuLoadCard">
+            <h2 class="heading">CPU Load</h2>
+            <div class="progress">
+                <div id="cpuLoadProgressBar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <p id="cpuLoadValue" class="mt-2">0%</p>
+        </div>
+        
+        <div class="info-card" id="cpuInfoCard">
+            <h2 class="heading">CPU Information</h2>
+            <table>
+                <tr>
+                  <th>Manufacturer</th>
+                  <th>Brand</th>
+                  <th>Cores</th>
+                  <th>Physical Cores</th>
+                  <th>Vendor</th>
+                  <th>Speed</th>
+                  <th>Virtualization</th>
+                </tr>
+                <tr>
+                  <td id="manufacturer">Fetching...</td>
+                  <td id="brand">Fetching...</td>
+                  <td id="cores">Fetching...</td>
+                  <td id="physicalCores">Fetching...</td>
+                  <td id="vendor">Fetching...</td>
+                  <td id="speed">Fetching...</td>
+                  <td id="virtualization">Fetching...</td>
+                </tr>
+              </table>              
+        </div>
+        
+        <div class="info-card" id="memoryInfoCard">
+            <h2 class="heading">Memory Information</h2>
+            <table>
+                <tr>
+                  <th>Total Memory</th>
+                  <th>Free Memory</th>
+                  <th>Used Memory</th>
+                  <th>Active Memory</th>
+                  <th>Buffers Memory</th>
+                  <th>Cached Memory</th>
+                </tr>
+                <tr>
+                  <td id="totalMemory">Fetching...</td>
+                  <td id="freeMemory">Fetching...</td>
+                  <td id="usedMemory">Fetching...</td>
+                  <td id="activeMemory">Fetching...</td>
+                  <td id="buffersMemory">Fetching...</td>
+                  <td id="cachedMemory">Fetching...</td>
+                </tr>
+              </table>  
+              
+        </div>
+
+        <div class="memoryCh">
+            <canvas id="memoryChart" height="200px" width="200px"></canvas>
+        </div>
+
+        <div class="info-card" id="processesCard">
+            <h2 class="heading">Processes</h2>
+            <table id="processesTable" class="table table-striped">
+                <thead class="thead">
+                    <tr>
+                        <th scope="col">PID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">CPU (%)</th>
+                        <th scope="col">Memory (MB)</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="processesTableBody">
+                    <!-- Processes will be inserted here dynamically -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Your custom JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="scripts.js"></script>
+</body>
+</html>

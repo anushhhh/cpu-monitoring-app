@@ -1,0 +1,101 @@
+/* Add your CSS styles here */
+body {
+    background-color: #BBE2EC;
+    color: #fff;
+    -webkit-user-select: none;
+    user-select: none;
+    font-family: Montserrat;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    src: url("../../assets/fonts/Poppins/Poppins-Regular.ttf");
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    padding: 20px;
+    background-color: #121212; /* Background color */
+    border-radius: 13px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.8); /* Shadow */
+}
+
+.progress-bar {
+    background-color: #92b9d6;;
+}
+
+.info-card {
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.heading {
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.background {
+    width: 300px;
+    height: 24px;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+}
+
+
+#cpuLoadProgressBar {
+    height: 20px;
+}
+
+#cpuLoadValue {
+    display: flex;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    margin-top: 2rem; /* Add the margin */
+    font-size: 2rem;
+}
+
+table {
+    margin-top: 30px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #92b9d6;;
+    color: #121212;
+}
+
+tr:nth-child(odd){
+    background-color: #121212;
+    color: #dddddd;
+}
+
+.memoryCh {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin-top: 2rem; 
+    padding: 1rem;
+    margin-left: 7rem;
+    margin-bottom: 1rem;
+}
