@@ -99,3 +99,14 @@ tr:nth-child(odd){
     margin-left: 7rem;
     margin-bottom: 1rem;
 }
+
+.action-button {
+    display: inline-block;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}

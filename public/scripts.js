@@ -99,6 +99,10 @@ function getProcesses(){
                     <td>${process.name}</td>
                     <td>${process.pcpu.toFixed(2)}</td>
                     <td>${(process.pmem / 1024).toFixed(2)}</td>
+                    <td>
+                        <button id="killProcessButton" class="action-button" onclick="killProcess(${process.pid})">Kill</button>
+                        <button class="action-button" onclick="viewDetails(pid)">Details</button>
+                    </td>
                 `;
                 processesTableBody.appendChild(row);
             });
@@ -143,7 +147,63 @@ function renderMemoryChart(memoryInfo) {
     });
 }
 
+function warningProcesses(){
+
+    const warningThresholds = {
+        cpuUsage: 70, 
+        memoryUsage: 80 
+    };
+    
+    function checkProcessWarnings(process) {
+        if (process.pcpu > warningThresholds.cpuUsage) {
+            alert(`Warning: Process ${process.pid} (${process.name}) has high CPU usage`);
+        }
+    
+        if (process.pmem > warningThresholds.memoryUsage) {
+            alert(`Warning: Process ${process.pid} (${process.name}) has high memory usage`);
+        }
+    }
+
+    async function fetchAndCheckProcesses() {
+        try {
+            const response = await fetch("/processes");
+            const data = await response.json();
+            const ans = data.forEach(process => {
+                checkProcessWarnings(process);
+            });
+            return ans;
+        } catch (error) {
+            console.error("Error fetching processes:", error);
+        }
+    }
+    fetchAndCheckProcesses();
+
+    setInterval(()=>{
+        fetchAndCheckProcesses()
+    }, 10000)
+}
+
+
+async function killProcess(pid) {
+    try {
+        const response = await fetch("/killProcess", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ pid })
+        });
+        const data = await response.json();
+        getProcesses();
+        console.log(data);
+        alert(data.message);
+    } catch (error) {
+        console.error("Error killing process:", error);
+        alert("Error killing process. Please try again.");
+    }
+}
+
 // Fetch all data in parallel
 async function fetchData() {
-    await Promise.all([getCpuLoad(), getCpuInfo(), getMemoryInfo(), getProcesses()]);
+    await Promise.all([getCpuLoad(), getCpuInfo(), getMemoryInfo(), getProcesses(), warningProcesses()]);
 }
