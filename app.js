@@ -53,7 +53,7 @@ app.get('/processes', async (req, res) => {
       const processes = await si.processes()
       .then(data => {
             const safetokill = data.list.filter(process=>{
-                return process.user !== 'root' && process.user !== 'SYSTEM' && process.cpu > 1;;
+                return process.user !== 'root' && process.user !== 'SYSTEM' && process.cpu > 1;
             })
             return safetokill
         });
@@ -64,7 +64,7 @@ app.get('/processes', async (req, res) => {
             name: process.name,
             pcpu: process.cpu,
             pmem: process.mem
-          });
+        });
           await newProcess.save();
           return newProcess;
       }))

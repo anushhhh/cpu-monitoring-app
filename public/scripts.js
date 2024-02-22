@@ -194,7 +194,7 @@ async function killProcess(pid) {
             body: JSON.stringify({ pid })
         });
         const data = await response.json();
-        getProcesses();
+        await Promise.all([getProcesses()]);
         console.log(data);
         alert(data.message);
     } catch (error) {
