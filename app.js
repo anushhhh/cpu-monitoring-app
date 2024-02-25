@@ -57,7 +57,6 @@ app.get('/processes', async (req, res) => {
             })
             return safetokill
         });
-      // Assuming `Process` model has fields: pid, name, pcpu, pmem
       const saved = await Promise.all(processes.map( async process=>{
         const newProcess = new Process({
             pid: process.pid,
@@ -82,21 +81,26 @@ app.post('/killProcess', async (req, res) => {
         return res.status(400).json({ error: "PID is required" });
     }
     
-    // Execute shell command to kill the process
     if (os.platform() === "win32") {
     exec(`taskkill /F /PID ${pid}`, (error, stdout, stderr) => {
         if (error) {
             console.log(error);
             console.error(`Error killing process with PID ${pid}: ${error.message}`);
-            return res.status(500).json({ error: `Error killing process with PID ${pid}` });
+            return res.status(500).json({ 
+                error: `Error killing process with PID ${pid}` 
+            });
         }
         if (stderr) {
             console.log(stderr);
             console.error(`Error killing process with PID ${pid}: ${stderr}`);
-            return res.status(500).json({ error: `Error killing process with PID ${pid}` });
+            return res.status(500).json({ 
+                error: `Error killing process with PID ${pid}` 
+            });
         }
         console.log(`Process with PID ${pid} killed successfully`);
-        return res.status(200).json({ message: `Process with PID ${pid} killed successfully` });
+        return res.status(200).json({ 
+            message: `Process with PID ${pid} killed successfully` 
+        });
     });
     }
 });

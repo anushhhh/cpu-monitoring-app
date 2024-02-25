@@ -113,7 +113,7 @@ function getProcesses(){
     fetchProcesses();
     setInterval(()=>{
         fetchProcesses()
-    }, 100000)
+    }, 10000)
 }
 
 function renderMemoryChart(memoryInfo) {
